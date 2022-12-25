@@ -1,0 +1,97 @@
+package functionalprogramming.structre;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+public class FP05BehaviourParameterization {
+	
+	
+	/*
+	 * boolen isEven(int x)
+	 *  {
+	 *  	return x%2==0;
+	 *   }
+	 *   
+	 *   int squared(int x)
+	 *   {
+	 *   	return x*x;
+	 *   }
+	 */
+
+	public static void main(String args[])
+	{
+		//printAllStructreList(Arrays.asList(1,2,3,4,9,8));
+		//printEvenNumberStructreList(Arrays.asList(2,4,6,7,1,9));
+		List<Integer> numbers = Arrays.asList(2,4,6,7,1,9,9,4,6);
+		
+		
+		Predicate<Integer> isevenpredicate = x->x%2==0;
+		
+		Predicate<Integer> isevenpredicate2 = new Predicate<Integer>()
+				{
+
+					@Override
+					public boolean test(Integer t) {
+						// TODO Auto-generated method stub
+						return t%2==0;
+					}
+			
+				};
+		
+		Function<Integer,Integer> squarefunction = x->x*x;
+		
+		Function<Integer,Integer> squarefunction2 = new Function<Integer,Integer>()
+				{
+
+					@Override
+					public Integer apply(Integer t) {
+						// TODO Auto-generated method stub
+						return t*t;
+					}
+			
+				};
+		
+		Consumer<Integer> sysoutconsumer = System.out::println;
+		Consumer<Integer> sysoutconsumer2 = new Consumer<Integer>()
+				{
+
+					@Override
+					public void accept(Integer t) {
+						System.out.println(t);
+						
+					}
+			
+				};
+		
+		numbers.stream()
+					.filter(isevenpredicate2)
+					.map(squarefunction2)
+					.forEach(sysoutconsumer2);
+		
+		BinaryOperator<Integer> sumbinaryoperator = Integer::sum;
+		BinaryOperator<Integer> sumbinaryoperator2=new BinaryOperator<>()
+				{
+
+					@Override
+					public Integer apply(Integer t, Integer u) {
+						// TODO Auto-generated method stub
+						return t+u;
+					}
+			
+				};
+		
+		int sum=numbers.stream()
+				.reduce(0,sumbinaryoperator);
+		
+	}
+
+	
+}

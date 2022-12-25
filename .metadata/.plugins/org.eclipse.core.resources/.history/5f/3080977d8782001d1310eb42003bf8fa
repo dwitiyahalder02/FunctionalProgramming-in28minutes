@@ -1,0 +1,39 @@
+package functionalprogramming.structre;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+public class FP03Functional3 {
+
+	public static void main(String args[])
+	{
+		//printAllStructreList(Arrays.asList(1,2,3,4,9,8));
+		//printEvenNumberStructreList(Arrays.asList(2,4,6,7,1,9));
+		List<Integer> numbers = Arrays.asList(2,4,6,7,1,9);
+		int sum=sumOfSquares(numbers);
+		int sum1=sumOfCubes(numbers);
+		System.out.println(sum);
+		System.out.println(sum1);
+	}
+
+
+   //square every number in the list and find sum of squares
+	private static int sumOfSquares(List<Integer> numbers) {
+		Optional<Integer> reduce = numbers.stream()
+					.map(x->x*x)
+					.reduce(Integer::sum);
+		return reduce.get();//get na korle value ta return hobe na
+	}
+	//square every number in the list and find sum of squares
+	private static int sumOfCubes(List<Integer> numbers) {
+		Optional<Integer> reduce = numbers.stream()
+					.map(x->x*x*x)
+					.reduce(Integer::sum);
+		return reduce.get();//get na korle value ta return hobe na
+	}
+
+	
+
+	
+}

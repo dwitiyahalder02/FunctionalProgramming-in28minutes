@@ -1,0 +1,24 @@
+1671728407121	Delete element
+1671728920234	Copy compilation unit
+1671729299921	Rename type 'FP01Functional'
+1671729326594	Rename compilation unit 'FP01structre.java'
+1671735606039	Copy compilation unit
+1671735846357	Copy compilation unit
+1671774648413	Copy compilation unit
+1671777450218	Copy compilation unit
+1671799042393	Copy compilation unit
+1671799179588	Rename type 'FP05Functional5'
+1671799486796	Extract local variable 'numbers2'
+1671800883230	Extract local variable 'predicate'
+1671800954394	Extract local variable 'squarefunction'
+1671801013783	Extract local variable 'sysoutconsumer'
+1671808401478	Extract local variable 'sumbinaryoperator'
+1671809618554	Copy compilation unit
+1671809791049	Extract local variable 'evenpredicate'
+1671809806677	Extract local variable 'oddpredicate'
+1671809902744	Extract method 'filterAndPrint'
+1671817630439	Extract local variable 'mapper'
+1671817804108	Extract method 'mapandcreate'
+1671864124555	Inline local variable 'mapper'
+1671864827719	Extract local variable 'mapper'
+1671910473384	Delete element

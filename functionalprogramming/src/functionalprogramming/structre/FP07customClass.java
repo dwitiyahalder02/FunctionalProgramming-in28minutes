@@ -1,0 +1,132 @@
+package functionalprogramming.structre;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+class Course
+{
+	private String name;
+	private String category;
+	private int reviewScore;
+	private int noOfStudents;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public int getReviewScore() {
+		return reviewScore;
+	}
+	public void setReviewScore(int reviewScore) {
+		this.reviewScore = reviewScore;
+	}
+	public int getNoOfStudents() {
+		return noOfStudents;
+	}
+	public void setNoOfStudents(int noOfStudents) {
+		this.noOfStudents = noOfStudents;
+	}
+	public Course(String name, String category, int reviewScore, int noOfStudents) {
+		super();
+		this.name = name;
+		this.category = category;
+		this.reviewScore = reviewScore;
+		this.noOfStudents = noOfStudents;
+	}
+	@Override
+	public String toString() {
+		return "Course [name=" + name + ", category=" + category + ", reviewScore=" + reviewScore + ", noOfStudents="
+				+ noOfStudents + "]";
+	}
+	
+}
+public class FP07customClass {
+
+	public static void main(String args[]) {
+		ArrayList<Course> courses=new ArrayList<>();
+		courses.add(new Course("java","Reading",20,200));
+		courses.add(new Course("SpringBoot","Writing",30,300));
+		courses.add(new Course("SpringDataJpa","story",50,900));
+		courses.add(new Course("Microservices","micro",100,100));
+		courses.add(new Course("Microservices1","micro",100,100));
+		courses.add(new Course("SpringBoot","microservices",200,790));
+		
+		
+		Predicate<Course> reviewScoreGreaterThan95Predicate 
+		= course -> course.getReviewScore() > 95;
+
+		Predicate<Course> reviewScoreGreaterThan90Predicate 
+		= course -> course.getReviewScore() > 90;
+		
+		Predicate<Course> reviewScoreLessThan90Predicate 
+		= course -> course.getReviewScore() < 90;
+		
+		//allMatch
+		//find if all the courses has review score greater than 90
+		System.out.println(courses.stream().allMatch(course->course.getReviewScore()>90));
+		
+
+		//nonematch
+		System.out.println(courses.stream().noneMatch(course->course.getReviewScore()>90));
+		
+		//anymatch
+		System.out.println(courses.stream().anyMatch(course->course.getReviewScore()>90));
+		
+		//sorting by comparator
+		Comparator<Course> comparingByNoOfStudentsIncreasing=Comparator.comparing(Course::getNoOfStudents);
+		System.out.println(courses.stream().sorted(comparingByNoOfStudentsIncreasing).collect(Collectors.toList()));
+		
+		Comparator<Course> comparingByNoOfStudentsDecreasing=Comparator.comparing(Course::getNoOfStudents).reversed();
+		System.out.println(courses.stream().sorted(comparingByNoOfStudentsDecreasing).collect(Collectors.toList()));
+		
+		//coomparing by number of students and number of reviews
+		Comparator<Course> ComparingByNoOfStudentsAndNoOfReviews=Comparator.
+											comparing(Course::getNoOfStudents)
+											.thenComparingInt(Course::getReviewScore)
+											.reversed();
+		
+		//limit operation
+		System.out.println(courses.stream().
+				sorted(comparingByNoOfStudentsDecreasing)
+				.limit(2)
+				.collect(Collectors.toList()));
+		//skip
+		System.out.println(courses.stream().
+				sorted(comparingByNoOfStudentsDecreasing)
+				.skip(3)
+				.collect(Collectors.toList()));
+		//max operation
+		System.out.println(courses.stream().max(ComparingByNoOfStudentsAndNoOfReviews));
+		//min operation
+		System.out.println(courses.stream().min(ComparingByNoOfStudentsAndNoOfReviews));
+		
+		//findFirst and findAny
+		System.out.println(courses.stream()
+									.filter(reviewScoreLessThan90Predicate)
+									.findAny());
+		//total no of students whose score are greater than 95
+		System.out.println(courses.stream()
+								.filter(reviewScoreGreaterThan95Predicate)
+								.mapToInt(Course::getNoOfStudents)
+								.sum());
+		//I want to group the courses by category
+		System.out.println(courses.stream()
+					.collect(Collectors.groupingBy(Course::getCategory)));
+		//counting no of courses in each category
+		System.out.println(courses.stream()
+				.collect(Collectors.groupingBy(Course::getCategory,Collectors.counting())));
+	}
+	
+	  
+	
+}

@@ -1,0 +1,28 @@
+package functionalprogramming.structre;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class FP02Structre {
+
+	public static void main(String args[])
+	{
+		//printAllStructreList(Arrays.asList(1,2,3,4,9,8));
+		//printEvenNumberStructreList(Arrays.asList(2,4,6,7,1,9));
+		List<Integer> numbers = Arrays.asList(2,4,6,7,1,9);
+		int sum=addListStructred(numbers);
+		System.out.println(sum);
+	}
+
+	private static int addListStructred(List<Integer> numbers) {
+		// TODO Auto-generated method stub
+		int sum=0;
+		for(int i:numbers)
+		{
+			sum+=i;
+		}
+		return sum;
+	}
+
+	
+}

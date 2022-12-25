@@ -1,0 +1,51 @@
+package functionalprogramming.structre;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+public class FP05BehaviourParameterization {
+	
+	
+	public static void main(String args[])
+	{
+		//printAllStructreList(Arrays.asList(1,2,3,4,9,8));
+		//printEvenNumberStructreList(Arrays.asList(2,4,6,7,1,9));
+		
+		List<Integer> numbers = Arrays.asList(2,4,6,7,1,9,9,4,6);
+		Predicate<Integer> evenpredicate = x->x%2==0;
+		filterAndPrint(numbers, evenpredicate);
+		
+		Predicate<Integer> oddpredicate = x->x%2==1;
+		filterAndPrint(numbers, oddpredicate);
+		
+		List<Integer> squaredNumber=mapandcreate(numbers, x->x*x);
+		List<Integer> cubedNumber=mapandcreate(numbers, x->x*x*x);
+		
+		List<Integer> doubledNumbers=mapandcreate(numbers, x->x+x);
+		System.out.println(squaredNumber);
+		System.out.println(cubedNumber);
+
+	}
+
+	private static List<Integer> mapandcreate(List<Integer> numbers, Function<Integer, Integer> mapper) {
+		return numbers.stream().
+				map(mapper).
+				collect(Collectors.toList());
+	}
+
+	private static void filterAndPrint(List<Integer> numbers, Predicate<? super Integer> predicate) {
+		numbers.stream()
+		.filter(predicate)
+		.forEach(System.out::println);
+	}
+
+	
+}

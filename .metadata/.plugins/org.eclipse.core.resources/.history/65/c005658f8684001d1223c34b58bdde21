@@ -1,0 +1,35 @@
+package functionalprogramming.structre;
+
+public class FP13Threads {
+
+	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		Runnable runnable = new Runnable() {
+//			@Override
+//			public void run() {
+//				for (int i = 0; i < 10000; i++) {
+//					System.out.println(Thread.currentThread().getId() + ":" + i);
+//					}
+//			}
+//
+//	};
+//	Thread thread=new Thread(runnable);
+//	thread.start();
+//	Thread thread1=new Thread(runnable);
+//	thread1.start();
+//	Thread thread2=new Thread(runnable);
+//	thread2.start();
+	//by using lambda
+	System.out.println("Thread using lambda");
+	Runnable runnable2=()->
+	{
+		for (int i = 0; i < 10000; i++) {
+			System.out.println(Thread.currentThread().getId() + ":" + i);
+			}
+		
+	};
+	Thread thread3=new Thread(runnable2);
+	thread3.start();
+ }
+
+}

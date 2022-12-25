@@ -1,0 +1,21 @@
+package functionalprogramming.structre;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class FP06methodrefference {
+
+	private static void print(String str)
+	{
+		System.out.println(str);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<String> courses=Arrays.asList("Spring","Hibernate","duckduckgo");
+		courses.stream().map(str->str.toUpperCase()).forEach(FP06methodrefference::print);
+		//FP06methodrefference::print ->static method reference
+
+	}
+
+}

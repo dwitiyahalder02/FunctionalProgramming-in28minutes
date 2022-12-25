@@ -1,0 +1,29 @@
+package functionalprogramming.structre;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class FP01structre {
+
+	public static void main(String args[])
+	{
+		printAllStructreListinFunctional(Arrays.asList(1,2,3,4,9,8));
+	}
+	private static void print(int no)
+	{
+		System.out.println(no);
+	}
+
+	private static void printAllStructreListinFunctional(List<Integer> number) {
+		// TODO Auto-generated method stub
+		//how to loop the numbers
+//		for(int i:number)
+//		{
+//			System.out.println(i);
+//		}
+//		
+		//for functional approach try to convert the numbers in streams.
+		number.stream().forEach(F)
+		//number.stream().forEach(t->System.out.println(t)); //by lambda
+	}
+}

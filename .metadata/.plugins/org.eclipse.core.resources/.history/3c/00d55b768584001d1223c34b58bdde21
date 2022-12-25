@@ -1,0 +1,18 @@
+package functionalprogramming.structre;
+
+public class FP13Threads {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+				for (int i = 0; i < 10000; i++) {
+					System.out.println(Thread.currentThread().getId() + ":" + i);
+					}
+			}
+
+	};
+ }
+
+}

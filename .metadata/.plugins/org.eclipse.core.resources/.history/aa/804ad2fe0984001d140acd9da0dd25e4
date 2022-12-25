@@ -1,0 +1,39 @@
+package functionalprogramming.structre;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class FP08Stream {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer> numbers=Arrays.asList(1,2,3,4,5,6);
+		System.out.println(numbers.stream());
+		
+		System.out.println(Stream.of(1,2,3,4,5,6).count());
+		
+		System.out.println(Stream.of(1,2,3,4,5,6).reduce(0,Integer::sum));
+		
+		System.out.println(Stream.of(1,2,3,4,5,6).reduce(0,(x,y)->(x+y)));
+		
+		System.out.println(Stream.of(1,2,3,4,5,6).reduce(0,(x,y)->(x-y)));
+		
+		System.out.println(Stream.of(1,2,3,4,5,6).reduce(1,(x,y)->(x*y)));
+		
+		System.out.println(Stream.of(1,2,3,4,5,6).reduce(1,(x,y)->(x/y)));
+		
+		int numarray[]= {1,2,3,5,7,8};
+		System.out.println(Arrays.stream(numarray).sum());
+		System.out.println(Arrays.stream(numarray).average());
+		System.out.println(Arrays.stream(numarray).min());
+		System.out.println(Arrays.stream(numarray).max());
+		
+		//the simplest way to create a stream using range
+		System.out.println(IntStream.range(1, 10));
+		//here 1 to 9 is a part of the stream.9 is not included
+		System.out.println(IntStream.range(1, 10).sum());
+	}
+
+}

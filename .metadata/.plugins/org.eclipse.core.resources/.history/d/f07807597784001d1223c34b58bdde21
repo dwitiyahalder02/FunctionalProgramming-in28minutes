@@ -1,0 +1,12 @@
+package functionalprogramming.structre;
+
+import java.util.stream.LongStream;
+
+public class FP11parallizing {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+				System.out.println(LongStream.range(0, 100000000));
+	}
+
+}

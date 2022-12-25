@@ -1,0 +1,11 @@
+package functionalprogramming.structre;
+
+class Course
+{
+	private String name;
+	private String category;
+	private String reviewScore;
+}
+public class FP07customClass {
+
+}

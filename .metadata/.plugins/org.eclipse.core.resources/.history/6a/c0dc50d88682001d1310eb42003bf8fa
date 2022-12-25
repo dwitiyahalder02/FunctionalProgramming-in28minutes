@@ -1,0 +1,28 @@
+package functionalprogramming.structre;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class FP03Functional3 {
+
+	public static void main(String args[])
+	{
+		//printAllStructreList(Arrays.asList(1,2,3,4,9,8));
+		//printEvenNumberStructreList(Arrays.asList(2,4,6,7,1,9));
+		List<Integer> numbers = Arrays.asList(2,4,6,7,1,9);
+		int sum=addListFunctional(numbers);
+		System.out.println(sum);
+	}
+
+
+   //square every number in the list and find sum of squares
+	private static int sumOfSquares(List<Integer> numbers) {
+		numbers.stream()
+					.map(x->x*x)
+					.reduce(0,(x,y)->x,y);
+	}
+
+	
+
+	
+}

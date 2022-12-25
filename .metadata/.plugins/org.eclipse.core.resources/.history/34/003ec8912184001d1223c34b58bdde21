@@ -1,0 +1,9 @@
+package functionalprogramming.structre;
+
+public class FP10HigherOrderfunc {
+
+	public static void main(String args[])
+	{
+		
+	}
+}
